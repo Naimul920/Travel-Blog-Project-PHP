@@ -45,33 +45,49 @@
                             <h5 class="text-primary">Register Account</h5>
 
                         </div>
+                        <span>
+                            <?php if (isset($message)) {?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <?php echo $message?>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button>
+                                </div>
+                            <?php } ?>
+                        </span>
                         <div class="p-2 mt-4">
-                            <form action="https://themesbrand.com/minible/layouts/index.html">
+                            <form action="action.php" method="post">
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="useremail">Email</label>
-                                    <input type="email" class="form-control" id="useremail" placeholder="Enter email">
+                                    <label class="form-label" for="username">Name</label>
+                                    <input type="text" name="name" class="form-control" id="username" placeholder="Enter name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">Phone</label>
+                                    <input type="number" name="phone" class="form-control" id="username" placeholder="Enter phone number">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                    <label class="form-label" for="useremail">Email </label>
+                                    <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email">
                                 </div>
+
+
 
                                 <div class="mb-3">
                                     <label class="form-label" for="userpassword">Password</label>
-                                    <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
                                 </div>
 
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="auth-terms-condition-check">
-                                    <label class="form-check-label" for="auth-terms-condition-check">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
-                                </div>
+<!--                                <div class="form-check">-->
+<!--                                    <input type="checkbox" class="form-check-input" id="auth-terms-condition-check">-->
+<!--                                    <label class="form-check-label" for="auth-terms-condition-check">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>-->
+<!--                                </div>-->
 
 
 
                                 <div class="mt-3 text-end">
-                                    <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">Register</button>
+                                    <button class="btn btn-primary w-sm waves-effect waves-light" type="submit" value="register" name="btn">Register</button>
                                 </div>
 
 
@@ -96,6 +112,9 @@
 </div>
 
 <!-- JAVASCRIPT -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="assets/admin/libs/jquery/jquery.min.js"></script>
 <script src="assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/admin/libs/metismenu/metisMenu.min.js"></script>
