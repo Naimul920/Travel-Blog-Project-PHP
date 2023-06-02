@@ -76,8 +76,7 @@ elseif (isset($_POST['btn']))
     if ($_POST['btn']=='register')
     {
         $user=new Register($_POST);
-        $message=$user->add();
+        $user->add();
 
-        include 'pages/admin/register.php';
     }
 }
