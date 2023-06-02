@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 use App\classes\frontend\Home;
+use App\classes\admin\Register;
 
 
 //Frontend route
@@ -71,5 +72,12 @@ elseif (isset($_POST['btn']))
 //        echo "<br>";
 //        echo print_r($_POST);
 //        echo "</br>";
+    }
+    if ($_POST['btn']=='register')
+    {
+        $user=new Register($_POST);
+        $message=$user->add();
+
+        include 'pages/admin/register.php';
     }
 }
