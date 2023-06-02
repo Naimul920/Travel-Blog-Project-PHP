@@ -45,16 +45,25 @@
                             <h5 class="text-primary">Register Account</h5>
 
                         </div>
-                        <span>
-                            <?php if (isset($message)) {?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <?php echo $message?>
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                     </button>
-                                </div>
-                            <?php } ?>
-                        </span>
+<!--                        <span>-->
+<!--                            --><?php //if (isset($_SESSION['message'])) {?>
+<!--                                <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--                                --><?php //echo $_SESSION['message']?>
+<!--                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                        <span aria-hidden="true">&times;</span>-->
+<!--                                     </button>-->
+<!--                                </div>-->
+<!--                            --><?php //} ?>
+<!--                        </span>-->
+                        <div class="alert">
+                            <?php
+                            if (isset($_SESSION['message']))
+                            {
+                                echo "<h4>".$_SESSION['message']."</h4>";
+                                unset($_SESSION['message']);
+                            }
+                            ?>
+                        </div>
                         <div class="p-2 mt-4">
                             <form action="action.php" method="post">
 

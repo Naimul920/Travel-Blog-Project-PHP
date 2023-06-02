@@ -3,6 +3,7 @@
 
 namespace App\classes\admin;
 use App\classes\database\Database;
+session_start();
 
 
 class Register extends Database
@@ -68,7 +69,9 @@ class Register extends Database
             $this->result=mysqli_query($this->con, $this->sql);
             if ($this->result)
             {
-                return'Registration successfully please login now';
+
+                $_SESSION['message']='Registration successfully please login now';
+                header('Location:action.php?status=login');
             }
             else
             {
@@ -77,6 +80,8 @@ class Register extends Database
 
         }
         else {
+            $_SESSION['message']='This email is already exist';
+            header('Location:action.php?status=register');
             return 'This email is exgist';
         }
 //        echo '<pre>';
