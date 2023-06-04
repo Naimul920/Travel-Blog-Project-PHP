@@ -69,14 +69,10 @@ elseif (isset($_POST['btn']))
     if ($_POST['btn']=='submit')
     {
         echo 'Hello i am from login';
-//        echo "<br>";
-//        echo print_r($_POST);
-//        echo "</br>";
     }
-    if ($_POST['btn']=='register')
+    elseif ($_POST['btn']=='register')
     {
-        $user=new Register($_POST);
-        $user->add();
-
+        $register= new Register($_POST);
+        $register->add();
     }
 }

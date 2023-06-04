@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -44,25 +47,28 @@
                             <h5 class="text-primary">Welcome Back !</h5>
                             <p class="text-muted">Sign in to continue to @My Blog</p>
                         </div>
-<!--                        <span>-->
-<!--                            --><?php //if (isset($_SESSION['message'])) {?>
-<!--                                <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
-<!--                                --><?php //echo $_SESSION['message']?>
-<!--                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--                                        <span aria-hidden="true">&times;</span>-->
-<!--                                     </button>-->
-<!--                                </div>-->
-<!--                            --><?php //} ?>
-<!--                        </span>-->
-                        <div class="alert">
-                            <?php
-                                if (isset($_SESSION['message']))
-                                {
-                                    echo "<h4>".$_SESSION['message']."</h4>";
+                        <span class="text-center">
+                            <?php if (isset($_SESSION['message'])) {?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <?php
+                                    echo $_SESSION['message'];
                                     unset($_SESSION['message']);
-                                }
-                            ?>
-                        </div>
+                                ?>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button>
+                                </div>
+                            <?php } ?>
+                        </span>
+<!--                        <div class="alert">-->
+<!--                            --><?php
+//                                if (isset($_SESSION['message']))
+//                                {
+//                                    echo "<h4>".$_SESSION['message']."</h4>";
+//                                    unset($_SESSION['message']);
+//                                }
+//                            ?>
+<!--                        </div>-->
                         <div class="p-2 mt-4">
                             <form action="action.php" method="post" enctype="">
 

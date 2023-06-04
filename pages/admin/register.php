@@ -1,3 +1,38 @@
+<?php
+session_start();
+?>
+<script>
+    function validateForm() {
+        let fName = document.forms["myForm"]["fname"].value;
+        let phone = document.forms["myForm"]["phone"].value;
+        let email = document.forms["myForm"]["email"].value;
+        let password = document.forms["myForm"]["password"].value;
+        if (fName == "") {
+            document.getElementById('nError').innerText='Name must be filled out';
+            // alert("Name must be filled out");
+            return false;
+        }
+        if (phone=="")
+        {
+            document.getElementById('phError').innerText='Phone must be filled out';
+            return false;
+        }
+        if (email=="")
+        {
+            document.getElementById('eError').innerText='Email must be filled out';
+            return false;
+        }
+        if (password=="")
+        {
+            document.getElementById('pError').innerText='Password must be filled out';
+            return false;
+        }
+    }
+</script>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -45,47 +80,55 @@
                             <h5 class="text-primary">Register Account</h5>
 
                         </div>
-<!--                        <span>-->
-<!--                            --><?php //if (isset($_SESSION['message'])) {?>
-<!--                                <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
-<!--                                --><?php //echo $_SESSION['message']?>
-<!--                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--                                        <span aria-hidden="true">&times;</span>-->
-<!--                                     </button>-->
-<!--                                </div>-->
-<!--                            --><?php //} ?>
-<!--                        </span>-->
-                        <div class="alert">
-                            <?php
-                            if (isset($_SESSION['message']))
-                            {
-                                echo "<h4>".$_SESSION['message']."</h4>";
-                                unset($_SESSION['message']);
-                            }
-                            ?>
-                        </div>
+                        <span class="text-center">
+                            <?php if (isset($_SESSION['message'])) {?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <?php
+                                    echo $_SESSION['message'];
+                                    unset($_SESSION['message']);
+                                ?>
+
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button>
+                                </div>
+                            <?php } ?>
+                        </span>
+<!--                        <div class="alert">-->
+<!--                            --><?php
+//                            if (isset($_SESSION['message']))
+//                            {
+//                                echo "<h4>".$_SESSION['message']."</h4>";
+//                                unset($_SESSION['message']);
+//                            }
+//                            ?>
+<!--                        </div>-->
                         <div class="p-2 mt-4">
-                            <form action="action.php" method="post">
+                            <form action="action.php" method="post" onsubmit="return validateForm()" name="myForm">
 
                                 <div class="mb-3">
                                     <label class="form-label" for="username">Name</label>
-                                    <input type="text" name="name" class="form-control" id="username" placeholder="Enter name">
+                                    <input type="text" name="name" class="form-control" id="fname" placeholder="Enter name">
+                                    <p id="nError" class="text-danger"></p>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="username">Phone</label>
-                                    <input type="number" name="phone" class="form-control" id="username" placeholder="Enter phone number">
+                                    <input type="number" name="phone" class="form-control" id="phone" placeholder="Enter phone number">
+                                    <p id="phError" class="text-danger"></p>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="useremail">Email </label>
-                                    <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                    <p id="eError" class="text-danger"></p>
                                 </div>
 
 
 
                                 <div class="mb-3">
                                     <label class="form-label" for="userpassword">Password</label>
-                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                                    <p id="pError" class="text-danger"></p>
                                 </div>
 
 <!--                                <div class="form-check">-->
