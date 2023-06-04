@@ -49,6 +49,10 @@ elseif (isset($_GET['status']))
     {
         include 'pages/admin/register.php';
     }
+    elseif ($_GET['status']=='verify-email')
+    {
+        echo 'Dashbord';
+    }
     elseif ($_GET['status']=='password-recovery')
     {
         include 'pages/admin/password-recovery.php';

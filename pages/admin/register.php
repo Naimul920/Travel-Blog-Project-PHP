@@ -63,9 +63,9 @@ session_start();
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <a href="index.html" class="mb-5 d-block auth-logo">
-                        <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                        <img src="assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                    <a href="action.php?status=register" class="mb-5 d-block auth-logo">
+                        <img src="assets/admin/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                        <img src="assets/admin/images/logo-light.png" alt="" height="22" class="logo logo-light">
                     </a>
                 </div>
             </div>
@@ -80,7 +80,7 @@ session_start();
                             <h5 class="text-primary">Register Account</h5>
 
                         </div>
-                        <span class="text-center">
+                        <span class="text-center" style="font-size: 12px !important;">
                             <?php if (isset($_SESSION['message'])) {?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <?php

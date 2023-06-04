@@ -4,8 +4,9 @@
   "description": "A simple blog project",
   "keywords": [],
   "license": "",
-  "require": {},
-  "require-dev": {},
+  "require": {
+    "phpmailer/phpmailer": "^6.8"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "app//"
