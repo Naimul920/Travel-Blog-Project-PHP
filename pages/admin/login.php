@@ -47,13 +47,14 @@ session_start();
                             <h5 class="text-primary">Welcome Back !</h5>
                             <p class="text-muted">Sign in to continue to @My Blog</p>
                         </div>
-                        <span class="text-center">
+                        <span class="text-center" style="font-size: 12px !important;">
                             <?php if (isset($_SESSION['message'])) {?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <?php
-                                    echo $_SESSION['message'];
-                                    unset($_SESSION['message']);
+                                echo $_SESSION['message'];
+                                unset($_SESSION['message']);
                                 ?>
+
                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                      </button>
