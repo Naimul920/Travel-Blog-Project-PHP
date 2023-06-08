@@ -1,6 +1,26 @@
 <?php
 session_start();
 ?>
+<script>
+    function validateLoginForm()
+    {
+        let x =document.forms["myForm"]['email'].value
+        let y =document.forms["myForm"]['password'].value
+
+        if (x=='')
+        {
+            document.getElementById('eError').innerText='Please Enter Your Email';
+            return false
+        }
+        if (y=='')
+        {
+            document.getElementById('pError').innerText='Please Enter Your Password';
+            return false
+        }
+    }
+
+</script>
+
 <!doctype html>
 <html lang="en">
 
@@ -31,9 +51,9 @@ session_start();
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <a href="index.html" class="mb-5 d-block auth-logo">
-                        <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                        <img src="assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                    <a href="action.php?status=login" class="mb-5 d-block auth-logo">
+                        <img src="assets/admin/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                        <img src="assets/admin/images/logo-light.png" alt="" height="22" class="logo logo-light">
                     </a>
                 </div>
             </div>
@@ -44,7 +64,7 @@ session_start();
 
                     <div class="card-body p-4">
                         <div class="text-center mt-2">
-                            <h5 class="text-primary">Welcome Back !</h5>
+                            <h5 class="text-primary">Welcome TO Travel BD !</h5>
                             <p class="text-muted">Sign in to continue to @My Blog</p>
                         </div>
                         <span class="text-center" style="font-size: 12px !important;">
@@ -61,21 +81,22 @@ session_start();
                                 </div>
                             <?php } ?>
                         </span>
-<!--                        <div class="alert">-->
-<!--                            --><?php
-//                                if (isset($_SESSION['message']))
-//                                {
-//                                    echo "<h4>".$_SESSION['message']."</h4>";
-//                                    unset($_SESSION['message']);
-//                                }
-//                            ?>
-<!--                        </div>-->
+                        <div class="alert">
+                            <?php
+                                if (isset($message))
+                                {
+                                    echo "<h4>".$message."</h4>";
+                                    unset($message);
+                                }
+                            ?>
+                        </div>
                         <div class="p-2 mt-4">
-                            <form action="action.php" method="post" enctype="">
+                            <form action="action.php" method="post" enctype="" onsubmit="return validateLoginForm()" name="myForm">
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">Username</label>
-                                    <input type="text" name="name" class="form-control" id="username" placeholder="Enter username">
+                                    <label class="form-label" for="username">Email</label>
+                                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
+                                    <p id="eError" class="text-danger"></p>
                                 </div>
 
                                 <div class="mb-3">
@@ -83,7 +104,8 @@ session_start();
                                         <a href="action.php?status=password-recovery" class="text-muted">Forgot password?</a>
                                     </div>
                                     <label class="form-label" for="userpassword">Password</label>
-                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                                    <p id="pError" class="text-danger"></p>
                                 </div>
 
                                 <div class="form-check">
@@ -117,8 +139,12 @@ session_start();
     </div>
     <!-- end container -->
 </div>
+<!--JAVASCRIPT CODE START--->
 
-<!-- JAVASCRIPT -->
+
+
+<!--JAVASCRIPT CODE END--->
+<!-- JAVASCRIPT LINK-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

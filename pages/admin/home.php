@@ -1,11 +1,15 @@
 <?php
 include 'include/header.php';
+include 'include/sidebar.php';
 
 ?>
-  <?php include 'include/sidebar.php'?>
-
-
-
+<?php
+session_start();
+if (!isset($_SESSION['id']))
+{
+    header('Location:action.php?status=login');
+}
+?>
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->

@@ -22,6 +22,7 @@ class Register extends Database
     private $sql;
     private $result;
     private $row;
+    private $clickToken;
 
 
     public function __construct($data=null, $file=null)
@@ -93,6 +94,40 @@ class Register extends Database
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+
+    }
+
+    public function emailVerifi($token)
+    {
+        $this->sql="SELECT v_token , v_status FROM users WHERE v_token='$token'";
+        $this->result= mysqli_query($this->con, $this->sql);
+        if ($this->result)
+        {
+            $this->row=mysqli_fetch_assoc($this->result);
+            if ($this->row['v_status']==0)
+            {
+                $this->clickToken=$this->row['v_token'];
+                $this->sql="UPDATE users SET v_status='1' WHERE v_token='$this->clickToken'";
+                $this->result=mysqli_query($this->con, $this->sql);
+                if ($this->result)
+                {
+                    $_SESSION['message']='Email verifi successful please login';
+                    header('Location:action.php?status=login');
+                }
+
+            }
+            else
+            {
+                $_SESSION['message']='Your email already verify please login';
+                header('Location:action.php?status=login');
+            }
+        }
+        else
+        {
+            die('Query Problem...'.mysqli_error($this->con));
+        }
+
+
 
     }
 

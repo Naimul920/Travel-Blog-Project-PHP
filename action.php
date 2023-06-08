@@ -2,7 +2,7 @@
 require_once 'vendor/autoload.php';
 use App\classes\frontend\Home;
 use App\classes\admin\Register;
-
+use App\classes\admin\Auth;
 
 //Frontend route
 
@@ -51,11 +51,19 @@ elseif (isset($_GET['status']))
     }
     elseif ($_GET['status']=='verify-email')
     {
-        echo 'Dashbord';
+        $token = $_GET['token'];
+        $register= new Register();
+        $register->emailVerifi($token);
+
     }
     elseif ($_GET['status']=='password-recovery')
     {
         include 'pages/admin/password-recovery.php';
+    }
+    elseif ($_GET['status']=='sign-out')
+    {
+        $auth= new Auth();
+        $auth->signOut();
     }
 
 
@@ -72,11 +80,13 @@ elseif (isset($_POST['btn']))
 {
     if ($_POST['btn']=='submit')
     {
-        echo 'Hello i am from login';
+        $auth = new Auth($_POST);
+        $auth->login();
     }
     elseif ($_POST['btn']=='register')
     {
         $register= new Register($_POST);
         $register->add();
+
     }
 }
