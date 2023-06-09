@@ -3,6 +3,8 @@ require_once 'vendor/autoload.php';
 use App\classes\frontend\Home;
 use App\classes\admin\Register;
 use App\classes\admin\Auth;
+use App\classes\admin\ResetPassword;
+use App\classes\admin\UpdateResetPassword;
 
 //Frontend route
 
@@ -65,7 +67,10 @@ elseif (isset($_GET['status']))
         $auth= new Auth();
         $auth->signOut();
     }
-
+    elseif ($_GET['status']=='reset-password')
+    {
+        include 'pages/admin/reset-password.php';
+    }
 
 
 }
@@ -87,6 +92,17 @@ elseif (isset($_POST['btn']))
     {
         $register= new Register($_POST);
         $register->add();
+
+    }
+    elseif ($_POST['btn']=='reset')
+    {
+        $reset = new ResetPassword($_POST);
+        $reset->ResetPassword();
+    }
+    elseif ($_POST['btn']=='reset-pass')
+    {
+        $UpdateResetPassword = new UpdateResetPassword($_POST);
+        $message = $UpdateResetPassword->updatePassword();
 
     }
 }

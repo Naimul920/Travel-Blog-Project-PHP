@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -42,18 +43,29 @@
                                 <h5 class="text-primary">Reset Password</h5>
                             </div>
                             <div class="p-2 mt-4">
-                                <div class="alert alert-success text-center mb-4" role="alert">
-                                    Enter your Email and instructions will be sent to you!
+                                <span class="text-center" style="font-size: 12px !important;">
+                            <?php if (isset($_SESSION['message'])) {?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <?php
+                                echo $_SESSION['message'];
+                                unset($_SESSION['message']);
+                                ?>
+
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button>
                                 </div>
-                                <form action="https://themesbrand.com/minible/layouts/index.html">
+                            <?php } ?>
+                        </span>
+                                <form action="action.php" method="post">
 
                                     <div class="mb-3">
                                         <label class="form-label" for="useremail">Email</label>
-                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email" name="email">
                                     </div>
 
                                     <div class="mt-3 text-end">
-                                        <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">Reset</button>
+                                        <button class="btn btn-primary w-sm waves-effect waves-light" type="submit" name="btn" value="reset">Reset</button>
                                     </div>
 
 
