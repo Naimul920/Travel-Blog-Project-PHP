@@ -13,6 +13,7 @@ class UpdateResetPassword extends Database
     private $re_password;
     private $con;
     private $sql;
+    private $reselt;
 
     public function __construct($data=null , $file=null)
     {
@@ -29,32 +30,46 @@ class UpdateResetPassword extends Database
 
     public function updatePassword()
     {
+        $this->sql="SELECT v_token FROM users WHERE v_token='$this->v_token'";
+        $this->reselt=mysqli_query($this->con , $this->sql);
 
-        if ($this->password == $this->re_password)
+        if (mysqli_num_rows($this->reselt) > 0)
         {
-            $this->sql="UPDATE users SET password='$this->password' WHERE v_token='$this->v_token'";
-            $this->result=mysqli_query($this->con , $this->sql);
-
-            if ($this->result)
+            if ($this->password == $this->re_password)
             {
-//                $this->v_token=md5(rand());
-//                $this->sql="UPDATE users SET v_token='$this->v_token' WHERE email ='$this->email'";
-//                $this->result=mysqli_query($this->con , $this->sql);
+                $this->sql="UPDATE users SET password='$this->password' WHERE v_token='$this->v_token'";
+                $this->reselt=mysqli_query($this->con , $this->sql);
+                if ($this->reselt)
+                {
+                    $this->new_token=md5(rand());
+                    $this->sql="UPDATE users SET v_token='$this->new_token' WHERE v_token='$this->v_token'";
+                    $this->reselt=mysqli_query($this->con , $this->sql);
+                    session_start();
+                    $_SESSION['message']='Password reset successfully login now';
+                    header('Location:action.php?status=login');
 
-                session_start();
-                $_SESSION['message']='Password reset successfully login now';
-                header('Location:action.php?status=login');
+                }
+                else
+                {
+                    session_start();
+                    $_SESSION['message']='Password not reset';
+                    header('Location:action.php?status=reset-password');
+                }
+
+
             }
             else
             {
-                die('Query problem..'.mysqli_error($this->sql));
+                session_start();
+                $_SESSION['message']='Password not match';
+                header('Location:action.php?status=reset-password');
             }
 
         }
         else
         {
             session_start();
-            $_SESSION['message']='Password is not match';
+            $_SESSION['message']='Invalid token';
             header('Location:action.php?status=reset-password');
         }
     }
