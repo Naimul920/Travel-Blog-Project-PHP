@@ -5,6 +5,7 @@ use App\classes\admin\Register;
 use App\classes\admin\Auth;
 use App\classes\admin\ResetPassword;
 use App\classes\admin\UpdateResetPassword;
+use App\classes\admin\Catagory;
 
 //Frontend route
 
@@ -71,6 +72,10 @@ elseif (isset($_GET['status']))
     {
         include 'pages/admin/reset-password.php';
     }
+    elseif ($_GET['status']=='add-catagory')
+    {
+        include 'pages/admin/add-catagory.php';
+    }
 
 
 }
@@ -103,6 +108,12 @@ elseif (isset($_POST['btn']))
     {
         $UpdateResetPassword = new UpdateResetPassword($_POST);
         $message = $UpdateResetPassword->updatePassword();
+
+    }
+    elseif ($_POST['btn']=='Create new catagory')
+    {
+        $catagory = new Catagory($_POST);
+        $catagory->create();
 
     }
 }

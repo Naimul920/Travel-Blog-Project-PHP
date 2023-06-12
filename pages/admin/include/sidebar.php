@@ -34,28 +34,14 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <li>
-                    <a href="index.html">
-                        <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="uil-window-section"></i>
-                        <span>Layouts</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">Vertical</a>
-
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">Horizontal</a>
-                        </li>
-                    </ul>
-                </li>
+                <ul>
+                    <li>
+                        <a href="">Catagory</a>
+                        <ul>
+                            <li><a href="action.php?status=add-catagory">Add Catagory</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
 
             </ul>
