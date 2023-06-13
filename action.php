@@ -76,6 +76,13 @@ elseif (isset($_GET['status']))
     {
         include 'pages/admin/add-catagory.php';
     }
+    elseif ($_GET['status']=='manage-category')
+    {
+        $catagory= new Catagory();
+        $categories=$catagory->manage();
+
+        include 'pages/admin/manage-category.php';
+    }
 
 
 }

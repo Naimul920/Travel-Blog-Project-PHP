@@ -34,15 +34,14 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <ul>
-                    <li>
+
+                    <li class="">
                         <a href="">Catagory</a>
                         <ul>
                             <li><a href="action.php?status=add-catagory">Add Catagory</a></li>
+                            <li><a href="action.php?status=manage-category">Manage Catagory</a></li>
                         </ul>
                     </li>
-                </ul>
-
 
             </ul>
         </div>

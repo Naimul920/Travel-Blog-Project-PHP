@@ -12,8 +12,11 @@ class Catagory extends Database
     private $con;
     private $sql;
     private $result;
+    private $row=[];
+    private $data;
+    private $i;
 
-        public function __construct($date)
+        public function __construct($date=null)
         {
             $this->con=$this->connect();
             if ($date)
@@ -49,5 +52,27 @@ class Catagory extends Database
             }
 
 
+        }
+        public function manage()
+        {
+            $this->sql="SELECT * FROM catagories";
+            $this->result=mysqli_query($this->con, $this->sql);
+            if ($this->result)
+            {
+
+                $this->i = 0;
+                while ($this->row=mysqli_fetch_assoc($this->result))
+                {
+                    $this->data[$this->i]['id'] = $this->row['id'];
+                    $this->data[$this->i]['name'] = $this->row['name'];
+                    $this->i++;
+                }
+                return $this->data;
+
+            }
+            else
+            {
+                die('Query Error....'.mysqli_error($this->con));
+            }
         }
 }

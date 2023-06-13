@@ -102,5 +102,4 @@
 </body>
 
 
-<!-- Mirrored from themesbrand.com/minible/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jul 2021 13:44:57 GMT -->
 </html>
