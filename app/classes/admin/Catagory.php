@@ -75,4 +75,51 @@ class Catagory extends Database
                 die('Query Error....'.mysqli_error($this->con));
             }
         }
+        public function getCategoryInfo($id)
+        {
+            $this->sql="SELECT * FROM catagories WHERE id='$id'";
+            $this->result=mysqli_query($this->con, $this->sql);
+            if ($this->result)
+            {
+                $this->row=mysqli_fetch_assoc($this->result);
+                return $this->row;
+            }
+            else
+            {
+                die('Query Error...'.mysqli_error($this->con));
+            }
+
+
+        }
+        public function updateCategoryById($id)
+        {
+            $this->sql="SELECT name FROM catagories WHERE name ='$this->name'";
+            $this->result=mysqli_query($this->con , $this->sql);
+            if (mysqli_num_rows($this->result) > 0)
+            {
+                session_start();
+                $_SESSION['message']='Category alredy exist';
+                $_SESSION['message_code']='error';
+                header('Location:action.php?status=manage-category');
+
+            }
+            else
+            {
+                $this->sql="UPDATE catagories SET name ='$this->name' WHERE id='$id'";
+                $this->result=mysqli_query($this->con, $this->sql);
+                if ($this->result)
+                {
+                    session_start();
+                    $_SESSION['message']='Data Update successful';
+                    $_SESSION['message_code']='success';
+                    header('Location:action.php?status=manage-category');
+                }
+                else
+                {
+                    die('Query Error...'.mysqli_error($this->con));
+                }
+            }
+
+
+        }
 }

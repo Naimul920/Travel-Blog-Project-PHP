@@ -98,6 +98,22 @@
 <!-- App js -->
 <script src="assets/admin/js/app.js"></script>
 
+<script src="assets/admin/js/sweetalert.js"></script>
+<?php
+if (isset($_SESSION['message']) && $_SESSION['message']!='')
+{?>
+    <script>
+        swal({
+            title: "<?php echo $_SESSION['message'] ?>",
+            // text: "You clicked the button!",
+            icon: "<?php echo $_SESSION['message_code'] ?>",
+            button: "OK!",
+        });
+    </script>
+<?php
+unset($_SESSION['message']);
+}?>
+
 
 </body>
 

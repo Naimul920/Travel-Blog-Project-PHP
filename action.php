@@ -83,7 +83,16 @@ elseif (isset($_GET['status']))
 
         include 'pages/admin/manage-category.php';
     }
+    elseif ($_GET['status']=='edit')
+    {
+        $id= $_GET['id'];
+        $id=base64_decode($id);
 
+        $category= new Catagory();
+        $category=$category->getCategoryInfo($id);
+
+        include 'pages/admin/edit.php';
+    }
 
 }
 
@@ -122,5 +131,12 @@ elseif (isset($_POST['btn']))
         $catagory = new Catagory($_POST);
         $catagory->create();
 
+    }
+    elseif ($_POST['btn']=='Update Category')
+    {
+        $id=$_POST['id'];
+        $catagory = new Catagory($_POST);
+        $categories=$catagory->manage();
+        $catagory->updateCategoryById($id);
     }
 }
