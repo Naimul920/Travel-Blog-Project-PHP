@@ -57,8 +57,8 @@ if (!isset($_SESSION['id']))
                                                             <td><?php echo $name;?></td>
                                                             <td >
                                                                 <a href="action.php?status=edit&id=<?php echo base64_encode($id);?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+<!--                                                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>-->
+                                                                <a href="action.php?status=delete&id=<?php echo base64_encode($id);?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to change status..')"><i class="fa fa-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

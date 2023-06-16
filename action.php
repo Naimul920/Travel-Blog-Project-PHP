@@ -93,6 +93,13 @@ elseif (isset($_GET['status']))
 
         include 'pages/admin/edit.php';
     }
+    elseif ($_GET['status']=='delete')
+    {
+        $id=base64_decode($_GET['id']);
+        echo $id;
+        $category = new Catagory();
+        $category->delete($id);
+    }
 
 }
 

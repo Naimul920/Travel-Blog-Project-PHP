@@ -122,4 +122,24 @@ class Catagory extends Database
 
 
         }
+        public function delete($id)
+        {
+            $this->sql="SELECT * FROM catagories WHERE id ='$id'";
+            $this->result=mysqli_query($this->con,$this->sql);
+            if ($this->result)
+            {
+                $this->sql="DELETE from catagories WHERE id='$id'";
+                $this->result=mysqli_query($this->con,$this->sql);
+                session_start();
+                $_SESSION['message']='Data Delete successful';
+                $_SESSION['message_code']='success';
+                header('Location:action.php?status=manage-category');
+
+            }
+            else
+            {
+                die('Query Error..!!'.mysqli_error($this->con));
+            }
+
+        }
 }
