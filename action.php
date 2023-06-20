@@ -6,6 +6,7 @@ use App\classes\admin\Auth;
 use App\classes\admin\ResetPassword;
 use App\classes\admin\UpdateResetPassword;
 use App\classes\admin\Catagory;
+use App\classes\admin\Post;
 
 //Frontend route
 
@@ -100,6 +101,14 @@ elseif (isset($_GET['status']))
         $category = new Catagory();
         $category->delete($id);
     }
+    elseif ($_GET['status']=='add-post')
+    {
+        include 'pages/admin/add-post.php';
+    }
+    elseif ($_GET['status']=='manage-post')
+    {
+        echo 'test';
+    }
 
 }
 
@@ -145,5 +154,14 @@ elseif (isset($_POST['btn']))
         $catagory = new Catagory($_POST);
         $categories=$catagory->manage();
         $catagory->updateCategoryById($id);
+    }
+    elseif ($_POST['btn']=='Create new Post')
+    {
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit();
+        $post = new Post($_POST);
+        $message = $post->addPost();
+        include 'pages/admin/add-post.php';
     }
 }

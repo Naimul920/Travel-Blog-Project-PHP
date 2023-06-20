@@ -42,6 +42,13 @@
                             <li><a href="action.php?status=manage-category">Manage Catagory</a></li>
                         </ul>
                     </li>
+                    <li class="">
+                        <a href="">Post</a>
+                        <ul>
+                            <li><a href="action.php?status=add-post">Add Post</a></li>
+                            <li><a href="action.php?status=manage-post">Manage Post</a></li>
+                        </ul>
+                    </li>
 
             </ul>
         </div>

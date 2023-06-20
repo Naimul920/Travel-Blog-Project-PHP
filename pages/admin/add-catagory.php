@@ -42,7 +42,7 @@ if (!isset($_SESSION['id']))
                                     <div class="row mb-3">
                                         <label class="col-md-3">Catagory Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="name">
+                                            <input type="text" class="form-control" name="name" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">

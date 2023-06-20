@@ -98,6 +98,24 @@
 <!-- App js -->
 <script src="assets/admin/js/app.js"></script>
 
+<!-- ckeditor -->
+<script src="assets/admin/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#classic-editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#classic-editor_2' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
 <script src="assets/admin/js/sweetalert.js"></script>
 <?php
 if (isset($_SESSION['message']) && $_SESSION['message']!='')
